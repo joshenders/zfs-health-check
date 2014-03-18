@@ -1,0 +1,19 @@
+#!/bin/bash
+
+status="$(zpool status -x)"
+database="/etc/zfs/zpool.status"
+
+if [[ "${status}" == "all pools are healthy" || "${status}" == "no pools available" ]]; then
+    # set current state
+    echo "healthy" > "${database}"
+else
+    # get known state
+    source "${database}"
+
+    if [[ "$(<${database})" == "healthy" ]]; then # state has changed, 'was healthy'
+        # `notify` uses api.pushover.net to send SMS notifications
+        notify "$(zpool status)"
+        # set new state
+        echo "unhealthy" > "${database}"
+    fi
+fi
