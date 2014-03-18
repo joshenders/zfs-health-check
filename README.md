@@ -1,9 +1,7 @@
 # About
-
-Variation on (Sfynx's script)[https://forums.freebsd.org/viewtopic.php?p=197113#p197113] on the FreeBSD forums
+Variation on [Sfynx's script](https://forums.freebsd.org/viewtopic.php?p=197113#p197113) on the FreeBSD forums
 
 # Setup
-
 Run this via cron at an acceptable interval.
 
 Here's a suggestion:
