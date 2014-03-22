@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PATH='/usr/local/bin:${PATH}'
+
 status="$(zpool status -x)"
 database="/etc/zfs/zpool.status"
 
@@ -11,7 +13,7 @@ else
     source "${database}"
 
     if [[ "${healthy}" == "true" ]]; then # state has changed, 'was healthy'
-        # `notify` uses api.pushover.net to send SMS notifications
+        # `notify` uses pushover to send SMS notifications
         notify "$(zpool status)"
         # set new state
         echo "healthy=false" > "${database}"
