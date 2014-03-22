@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PATH='/usr/local/bin:${PATH}'
+export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
 
 status="$(zpool status -x)"
 database="/etc/zfs/zpool.status"
